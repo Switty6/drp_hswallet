@@ -31,24 +31,22 @@ Citizen.CreateThread(function()
                 
                 SendNUIMessage({
                     type = 'key',
-                    status= status,
-                    headshot= headshot
+                    status = status,
+                    headshot = headshot,
+                    resourceName = GetCurrentResourceName()
                 })
                 Wait(460)
                 headshot = GetPedheadshotTxdString(head)    
             end
     
-            if status then
-    
-                DrawSprite(headshot, headshot, 0.7345, 0.83, 0.05, 0.08, 0.0, 255, 255, 255, 255)
-                
+            if status then    
+                DrawSprite(headshot, headshot, 0.7345, 0.83, 0.05, 0.08, 0.0, 255, 255, 255, 255)                
             end
         end
 
     end
     
 end)
-
 
 RegisterNUICallback("check", function(data)
     TriggerServerEvent('GetMoney')
@@ -63,7 +61,4 @@ AddEventHandler('sendData', function(name, id, cash, dirty)
         cash = cash,
         dirty = dirty,
     })
-
-
-
 end)

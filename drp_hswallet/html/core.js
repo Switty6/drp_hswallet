@@ -1,9 +1,3 @@
-
-function changeSpan() {
-    $('#name').text('Your text here');   
-}
-
-
 $(document).ready(function(){
     function animation(animate){
         if (animate == false){
@@ -22,13 +16,13 @@ $(document).ready(function(){
         if (data.type === 'key'){
             if (data.status === true) {
                 animation(false);
-                $.post('http://drp_wallet/check', JSON.stringify({}));
+                $.post('http://'+ data.resourceName +'/check', JSON.stringify({}));
                 return;
             }
             else{
                 animation(true);
             }
-        } 
+        }
         else if (data.type === 'walletdata'){
             $("#name").text(data.name);
             $("#char-id").text(data.id);
