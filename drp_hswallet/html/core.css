@@ -1,0 +1,68 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.book-bg {
+  position: absolute;
+  width: 280px;
+  height: 200px;
+  left: 70%;
+  top: 95%;
+  background: url("id.png");
+  background-size: cover;
+  transform-style: preserve-3d;
+  perspective: 500px;
+
+}
+.book-cover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url("cover.png");
+  background-position: center;
+  background-size: cover;
+  transform-origin: 0 50%;
+  transition: all 0.3s ease;
+  z-index: 3;
+  top:-0.1%;
+  left:5%;
+}
+.book-page {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url("page.png");
+  background-position: center;
+  background-size: cover;
+  transform-origin: 0 50%;
+  transition: all 0.3s ease;
+  z-index: 2;
+  left:5%;
+  top:-0.1%;
+}
+
+.book-bg:hover .book-cover {
+  transform: rotateY(-90deg);
+}
+.book-bg:hover .book-page {
+  transform: rotateY(-89.9deg);
+}
+
+p{
+  position: relative;
+  margin:0;
+  top:44px;
+  left: 38.5%;
+  color:rgb(184, 182, 182);
+}
+.name {
+  top:40px;
+}
+.cash{
+  top:45px;
+}
+.dcash{
+  top:50px;
+}
+
