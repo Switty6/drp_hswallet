@@ -1,7 +1,7 @@
 RegisterServerEvent("GetMoney")
 AddEventHandler("GetMoney",function()
     local src = source
-    local CharacterData = exports["drp_id"]:GetCharacterData(source)
+    local CharacterData = exports["drp_id"]:GetCharacterData(src)
 
     TriggerEvent("DRP_Bank:GetCharacterMoney", CharacterData.charid, function(characterMoney)
         if characterMoney.data[1].dirtycash == nil then
