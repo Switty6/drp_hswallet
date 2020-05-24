@@ -31,24 +31,22 @@ Citizen.CreateThread(function()
                 
                 SendNUIMessage({
                     type = 'key',
-                    status= status,
-                    headshot= headshot
+                    status = status,
+                    headshot = headshot,
+                    resourceName = GetCurrentResourceName()
                 })
                 Wait(460)
                 headshot = GetPedheadshotTxdString(head)    
             end
     
-            if status then
-    
-                DrawSprite(headshot, headshot, 0.7345, 0.83, 0.05, 0.08, 0.0, 255, 255, 255, 255)
-                
+            if status then    
+                DrawSprite(headshot, headshot, 0.7345, 0.83, 0.05, 0.08, 0.0, 255, 255, 255, 255)                
             end
         end
 
     end
     
 end)
-
 
 RegisterNUICallback("check", function(data)
     TriggerServerEvent('GetMoney')
@@ -60,10 +58,15 @@ AddEventHandler('sendData', function(name, id, cash, dirty)
         type = 'walletdata',
         name = name, 
         id = id,
-        cash = cash,
-        dirty = dirty,
+        cash = format_thousand(cash),
+        dirty = format_thousand(dirty),
     })
-
-
-
 end)
+
+function format_thousand(v)
+    local s = string.format("%d", math.floor(v))
+    local pos = string.len(s) % 3
+    if pos == 0 then pos = 3 end
+    return string.sub(s, 1, pos)
+    ..string.gsub(string.sub(s, pos+1), "(...)", ".%1")
+end
