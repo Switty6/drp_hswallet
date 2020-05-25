@@ -54,27 +54,19 @@ end)
 
 RegisterNetEvent('sendData')
 AddEventHandler('sendData', function(name, id, cash, dirty)
-
     SendNUIMessage({
         type = 'walletdata',
         name = name, 
         id = id,
-        cash = separate(cash),
-        dirty = separate(dirty),
+        cash = format_thousand(cash),
+        dirty = format_thousand(dirty),
     })
 end)
 
-function separate(amount)
-    local formatted = amount
-    if formatted == nil then 
-        formatted = 0
-    end
-    while true do  
-      formatted, k = string.gsub(tostring(formatted), "^(-?%d+)(%d%d%d)", '%1.%2')
-      if (k==0) then
-        break
-      end
-    end
-    return formatted
+function format_thousand(v)
+    local s = string.format("%d", math.floor(v))
+    local pos = string.len(s) % 3
+    if pos == 0 then pos = 3 end
+    return string.sub(s, 1, pos)
+    ..string.gsub(string.sub(s, pos+1), "(...)", ".%1")
 end
-  
