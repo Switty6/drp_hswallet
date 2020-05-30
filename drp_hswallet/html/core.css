@@ -13,6 +13,7 @@ body {
   background-size: cover;
   transform-style: preserve-3d;
   perspective: 500px;
+  display: none;
 
 }
 .book-cover {
@@ -27,6 +28,7 @@ body {
   z-index: 3;
   top:-0.1%;
   left:5%;
+
 }
 .book-page {
   position: absolute;
@@ -40,6 +42,7 @@ body {
   z-index: 2;
   left:5%;
   top:-0.1%;
+
 }
 
 .book-bg:hover .book-cover {
